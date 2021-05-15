@@ -1,0 +1,42 @@
+name: multi-region-aks-deploy
+
+on:
+  push:
+    paths:
+      - 'terraform/**'
+  pull_request:
+    paths:
+      - 'terraform/**'
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: "checkout"
+      uses: actions/checkout@master
+    
+    - name: "terraform init"
+      uses: hashicorp/terraform-github-actions@master
+      with:
+        tf_actions_working_dir: 'terraform'
+        tf_actions_version: 0.14.0
+        tf_actions_subcommand: "init"
+        args: '-backend-config="resource_group_name=${{ secrets.RESOURCE_GROUP_NAME }}" -backend-config="storage_account_name=${{ secrets.STORAGE_ACCOUNT_NAME }}" -backend-config="access_key=${{ secrets.ACCESS_KEY }}"'
+
+    - name: "terraform plan"
+      uses: hashicorp/terraform-github-actions@master
+      with:
+        tf_actions_working_dir: 'terraform'
+        tf_actions_version: 0.14.0
+        tf_actions_subcommand: "plan"
+        args: '-var="tenant_id=${{ secrets.TENANT_ID }}" -var="subscription_id=${{ secrets.SUBSCRIPTION_ID }}" -var="client_id=${{ secrets.CLIENT_ID }}" -var="client_secret=${{ secrets.CLIENT_SECRET }}" '
+    
+    - name: "terraform apply"
+      uses: hashicorp/terraform-github-actions@master
+      with:
+        tf_actions_working_dir: 'terraform'
+        tf_actions_version: 0.14.0
+        tf_actions_subcommand: "apply"
+        args: '-var="tenant_id=${{ secrets.TENANT_ID }}" -var="subscription_id=${{ secrets.SUBSCRIPTION_ID }}" -var="client_id=${{ secrets.CLIENT_ID }}" -var="client_secret=${{ secrets.CLIENT_SECRET }}"'
