@@ -1,3 +1,8 @@
+variable "subscription_id" {}
+variable "tenant_id" {}
+variable "client_id" {}
+variable "client_secret" {}
+
 variable "locations" {
   type        = map
   description = "Map of locations for app services and plans"
