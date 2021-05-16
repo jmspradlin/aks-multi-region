@@ -2,6 +2,7 @@ name: terraform-destroy
 
 trigger:
 - none
+on:
 
 jobs:
   build:
