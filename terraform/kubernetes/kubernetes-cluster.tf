@@ -8,14 +8,14 @@ data "azurerm_log_analytics_workspace" "la01" {
 }
 
 data "azurerm_virtual_network" "vnet" {
-  name = var.vnet_name
+  name                = var.vnet_name
   resource_group_name = var.rg_name
 }
 
 data "azurerm_subnet" "subnet" {
-  name = var.subnet_name
+  name                 = var.subnet_name
   virtual_network_name = data.azurerm_virtual_network.vnet.name
-  resource_group_name = data.azurerm_virtual_network.vnet.resource_group_name
+  resource_group_name  = data.azurerm_virtual_network.vnet.resource_group_name
 }
 
 resource "azurerm_log_analytics_solution" "container_insights" {

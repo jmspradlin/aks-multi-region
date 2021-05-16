@@ -6,11 +6,11 @@ data "azurerm_resource_group" "rg_info" {
 
 # Key Vault Resource builds
 resource "azurerm_key_vault" "kv" {
-  name                        = var.kv_name
-  location                    = data.azurerm_resource_group.rg_info.location
-  resource_group_name         = data.azurerm_resource_group.rg_info.name
-  tenant_id                   = data.azurerm_client_config.current.tenant_id
-  sku_name                    = lower(var.kv_sku)
+  name                = var.kv_name
+  location            = data.azurerm_resource_group.rg_info.location
+  resource_group_name = data.azurerm_resource_group.rg_info.name
+  tenant_id           = data.azurerm_client_config.current.tenant_id
+  sku_name            = lower(var.kv_sku)
 
   enabled_for_disk_encryption     = var.kv_enabled_for_disk_encryption
   enabled_for_deployment          = var.kv_enabled_for_deployment

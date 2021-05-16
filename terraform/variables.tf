@@ -8,16 +8,16 @@ variable "locations" {
   description = "Map of locations for app services and plans"
   default = {
     eastus = {
-      rg_location   = "eastus"
-      address_space = "192.168.0.0/24"
+      rg_location    = "eastus"
+      address_space  = "192.168.0.0/24"
       node_pool_name = "ltleus"
     },
     # eastus2 = {
     #   rg_location = "eastus2"
     # },
     westus = {
-      rg_location   = "westus"
-      address_space = "192.168.1.0/24"
+      rg_location    = "westus"
+      address_space  = "192.168.1.0/24"
       node_pool_name = "ltlwus"
     },
     # westus2 = {
