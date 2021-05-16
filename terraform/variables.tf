@@ -7,28 +7,40 @@ variable "locations" {
   type        = map
   description = "Map of locations for app services and plans"
   default = {
-    eastus = {
-      rg_location    = "eastus"
-      address_space  = "192.168.0.0/24"
-      node_pool_name = "ltleus"
-    },
+    # eastus = {
+    #   rg_location    = "eastus"
+    #   address_space  = "192.168.0.0/24"
+    #   node_pool_name = "ltleus"
+    #   availability_zones = ["1", "2", "3"]
+    # },
     # eastus2 = {
     #   rg_location = "eastus2"
+    #   address_space  = "192.168.1.0/24"
+    #   node_pool_name = "ltleus2"
+    #   availability_zones = ["1", "2", "3"]
     # },
-    westus = {
-      rg_location    = "westus"
-      address_space  = "192.168.1.0/24"
-      node_pool_name = "ltlwus"
-    },
+    # westus = {
+    #   rg_location    = "westus"
+    #   address_space  = "192.168.2.0/24"
+    #   node_pool_name = "ltlwus"
+    # },
     # westus2 = {
     #   rg_location = "westus2"
+    #    address_space  = "192.168.3.0/24"
+    #    node_pool_name = "ltlwus2"
+    #    availability_zones = ["1", "2", "3"]
     # },
-    # southcentralus = {
-    #   rg_location = "southcentralus"
-    # },
-    # northcentralus = {
-    #   rg_location = "northcentralus"
-    # }
+    southcentralus = {
+      rg_location = "southcentralus"
+      address_space  = "192.168.3.0/24"
+      node_pool_name = "ltlscus"
+      availability_zones = ["1", "2", "3"]
+    },
+    northcentralus = {
+      rg_location = "northcentralus"
+      address_space  = "192.168.4.0/24"
+      node_pool_name = "ltlncus"
+    }
   }
 }
 
