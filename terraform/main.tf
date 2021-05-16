@@ -85,7 +85,7 @@ module "aks_cluster" {
   aks_node_pool_name          = each.value.node_pool_name
   aks_node_pool_vmsize        = "Standard_A2_v2"
   aks_autoscale_enable        = true
-  aks_node_availability_zones = each.value.availability_zones
+  aks_node_availability_zones = ["1", "2", "3"]
   aks_node_max_count          = 6
   aks_node_min_count          = 2
   aks_node_initial_count      = 2
