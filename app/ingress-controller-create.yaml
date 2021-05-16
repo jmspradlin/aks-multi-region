@@ -1,0 +1,13 @@
+name: 'ingress-controller-create'
+description: 'Gather required information and set internal static ip ingress controller'
+inputs:
+  static-ip:
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - run: kubectl create namespace ingress-basic
+      shell: bash
+    - run: helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
+      shell: bash
+    - run: helm install nginx-ingress ingress-nginx/ingress-nginx --namespace ingress-basic -f internal-ingress.yaml --set controller.replicaCount=2 --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux --set controller.service.loadBalancerIP=$(static-ip) --set controller.admissionWebhooks.patch.nodeSelector."beta\.kubernetes\.io/os"=linux
