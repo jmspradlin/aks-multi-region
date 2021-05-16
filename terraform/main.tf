@@ -83,7 +83,7 @@ module "aks_cluster" {
   aks_dns_prefix_private = "aksltl${each.value.rg_location}"
   aks_identity_type      = "SystemAssigned"
   aks_node_pool_name     = each.value.node_pool_name
-  aks_node_pool_vmsize   = "Standard_D2_v2"
+  aks_node_pool_vmsize   = "Standard_A2_v2"
   aks_autoscale_enable   = true
   aks_node_max_count     = 6
   aks_node_min_count     = 2
