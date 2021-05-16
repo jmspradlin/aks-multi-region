@@ -1,7 +1,5 @@
 name: terraform-destroy
 
-trigger:
-- none
 on: 
   workflow_dispatch:
     inputs:
