@@ -79,18 +79,19 @@ module "aks_cluster" {
   la_workspace_name = "loganalytics-${each.value.rg_location}-01"
 
   # AKS variables
-  aks_name               = "aks-ltl-${each.value.rg_location}-01"
-  aks_dns_prefix_private = "aksltl${each.value.rg_location}"
-  aks_identity_type      = "SystemAssigned"
-  aks_node_pool_name     = each.value.node_pool_name
-  aks_node_pool_vmsize   = "Standard_A2_v2"
-  aks_autoscale_enable   = true
-  aks_node_max_count     = 6
-  aks_node_min_count     = 2
-  aks_node_initial_count = 2
-  aks_network_plugin     = "azure"
-  aks_network_policy     = "calico"
-  aks_lb_sku             = "Standard"
-  aks_aad_managed        = true
-  aks_rbac_enabled       = true
+  aks_name                    = "aks-ltl-${each.value.rg_location}-01"
+  aks_dns_prefix_private      = "aksltl${each.value.rg_location}"
+  aks_identity_type           = "SystemAssigned"
+  aks_node_pool_name          = each.value.node_pool_name
+  aks_node_pool_vmsize        = "Standard_A2_v2"
+  aks_autoscale_enable        = true
+  aks_node_availability_zones = ["1", "2", "3"]
+  aks_node_max_count          = 6
+  aks_node_min_count          = 2
+  aks_node_initial_count      = 2
+  aks_network_plugin          = "azure"
+  aks_network_policy          = "calico"
+  aks_lb_sku                  = "Standard"
+  aks_aad_managed             = true
+  aks_rbac_enabled            = true
 }

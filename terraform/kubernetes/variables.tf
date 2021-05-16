@@ -11,6 +11,7 @@ variable "aks_identity_type" {}
 variable "aks_node_pool_name" {}
 variable "aks_node_pool_vmsize" {}
 variable "aks_autoscale_enable" {}
+variable "aks_node_availability_zones" {}
 variable "aks_node_max_count" {}
 variable "aks_node_min_count" {}
 variable "aks_node_initial_count" {}
