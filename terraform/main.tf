@@ -44,7 +44,7 @@ module "virtual_network" {
   address_space = each.value.address_space
   subnet_name   = "default01"
 }
-
+#commit
 # Multiple Log Analytics Deployment
 module "log_analytics" {
   source   = "./log-analytics"
